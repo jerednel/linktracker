@@ -5,7 +5,9 @@ gem 'rails', '4.0.4'
 gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

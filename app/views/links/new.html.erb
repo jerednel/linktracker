@@ -1,3 +1,4 @@
+
 <h3>Creating new link</h3>
 
 <%= form_for @link do |f| %>
@@ -22,7 +23,7 @@
 </div>
 <div class="field">
 	<%= f.label :status %>
-	<%= f.text_field :status %>
+	<%= f.select(:status, [['', ''], ['Queued', 'Queued'], ['Actioned', 'Actioned'], ['Active', 'Active']]) %>
 </div>
 <div class="field">
 	<%= f.label :anchor_text %>
@@ -36,14 +37,23 @@
 	<%= f.label :pagerank %>
 	<%= f.select(:pagerank, [ ['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
 </div>
-<div class="field">
+<div class="field" id="datetimepicker" class="input-append date">
 	<%= f.label :date_requested %>
-	<%= f.text_field :date_requested %>
+	<%= f.text_field :date_requested,"data-format" => "yyyy-MM-dd" %>
+	 <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
 </div>
-<div class="field">
+<div class="field" id="datetimepicker2" class="input-append date">
 	<%= f.label :date_active %>
-	<%= f.text_field :date_active %>
+	<%= f.text_field :date_active, "data-format" => "yyyy-MM-dd" %>
+	 <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
 </div>
+
+
+
 <div class="field">
 	<%= f.label :contact_email %>
 	<%= f.text_field :contact_email %>
@@ -57,3 +67,13 @@
 <div class="actions"><%= f.submit %></div>
 <% end %>
 
+
+    
+    <script type="text/javascript">
+      $('#datetimepicker').datetimepicker({
+        format: 'yyyy-MM-dd',
+      });
+      $('#datetimepicker2').datetimepicker({
+        format: 'yyyy-MM-dd',
+      });
+    </script>

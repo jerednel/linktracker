@@ -1,44 +1,41 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <title>Ecomoffers</title>
-
-  <!-- Latest compiled and minified CSS -->
+  <title>Link Tracker</title>
+    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+ <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+<script type="text/javascript" src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js"></script>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
 </head>
  <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to "Link Manager", links_path, :class=> "navbar-brand" %>
+      <div class="container fill">
 
-        </div>
         <div class="navbar-collapse collapse">
+
           <form class="navbar-form navbar-right" role="form">
+
           <% if current_user %>
-           <p class="navbar-text pull-right">Logged in as <%= current_user.email %> -   
+
+           <p class="navbar-text pull-right">
+           <%= link_to "Home", links_path %> - 
+            <%= link_to "New Link", new_link_path %> - 
+           Logged in as <%= current_user.email %> -   
            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></p>
           <% else %>
            <p class="navbar-text pull-right"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> or
            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></p>
           <% end %>
-           <!-- <button type="submit" class="btn btn-success">Sign in</button> -->
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -52,7 +49,9 @@
      <button type="button" class="btn btn-xs btn-warning"> <%= content_tag :div, msg, :id => "flash_#{name}" %></button>
     <% end %>
     <div style="padding:50px;"></div>
+
     <%= yield %>
+    <!--
       <div class="row">
         <div class="col-md-4">
           <h2>Heading</h2>
@@ -69,7 +68,7 @@
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
-      </div>
+      </div>-->
 
       <hr>
 
@@ -82,8 +81,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>-->
+
+
   </body>
 
 
