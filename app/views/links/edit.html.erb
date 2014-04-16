@@ -1,0 +1,60 @@
+<h3>Creating new link</h3>
+
+<%= form_for @link do |f| %>
+	<% if @link.errors.any? %>
+	<div class="error messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @link.errors.full_messages %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end %>
+
+<div class="field">
+	<%= f.label :ctyhocn %>
+	<%= f.text_field :ctyhocn %>
+</div>
+<div class="field">
+	<%= f.label :linking_site %>
+	<%= f.text_field :linking_site %>
+</div>
+<div class="field">
+	<%= f.label :status %>
+	<%= f.text_field :status %>
+</div>
+<div class="field">
+	<%= f.label :anchor_text %>
+	<%= f.text_field :anchor_text %>
+</div>
+<div class="field">
+	<%= f.label :link_type %>
+	<%= f.select(:link_type, [['', ''], ['Regional Site', 'Regional Site'], ['Directory', 'Directory'], ['News Article', 'News Article'], ['.EDU/.GOV/.ORG', '.EDU/.GOV/.ORG'], ['Travel', 'Travel'], ['Blog', 'Blog']]) %>
+</div>
+<div class="field">
+	<%= f.label :pagerank %>
+	<%= f.select(:pagerank, [ ['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]) %>
+
+</div>
+<div class="field">
+	<%= f.label :date_requested %>
+	<%= f.date_field :date_requested %>
+</div>
+<div class="field">
+	<%= f.label :date_active %>
+	<%= f.date_field :date_active %>
+</div>
+<div class="field">
+	<%= f.label :contact_email %>
+	<%= f.text_field :contact_email %>
+</div>
+  <div class="field">
+    
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  </div>
+
+
+<div class="actions"><%= f.submit %></div>
+<% end %>
+
