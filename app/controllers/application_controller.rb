@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   def set_current_user
   	User.current_user = current_user
   end
+
+  before_filter :configure_devise_params, if: :devise_controller?
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:director, :senior, :email, :password, :password_confirmation)
+    end
+  end
 end

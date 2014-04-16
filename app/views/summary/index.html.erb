@@ -1,0 +1,18 @@
+<%= form_tag("/summary", method: "get") do %>
+	<%= label_tag(:director, "Director Email") %>
+	<%= text_field_tag(:director) %>
+
+	<%= label_tag(:start_date, "Start Date (YYYY-MM-DD") %>
+	<%= text_field_tag(:start_date) %>
+
+		<%= label_tag(:end_date, "End Date (YYYY-MM-DD") %>
+	<%= text_field_tag(:end_date) %>
+
+	<%= submit_tag("Submit") %>
+<% end %>
+<% @users.each do |user| %>
+ <%= user.email %> - <%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count %>
+
+
+
+<% end %>
