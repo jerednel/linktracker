@@ -9,8 +9,17 @@ class LinksController < ApplicationController
 		@user = current_user
 	end
 
+	  def destroy
+	    @link = Link.find(params[:id])
+	    @link.destroy
+	    respond_to do |format|
+	      format.html { redirect_to links_path }
+	      format.json { head :no_content }
+	    end
+	  end
+
 	def import
-		Link.import(params[:file], current_user.id.to_s)
+		Link.import(params[:file], current_user.id)
 		redirect_to :root, :notice => "Links Imported"
 	end
 

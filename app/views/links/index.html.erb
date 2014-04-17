@@ -34,7 +34,7 @@
       <%= link_to link.contact_email.truncate(20), "mailto:" + link.contact_email %></td>
     <% end %>
   <td><%= link.date_active %></td>
-  <td><%= link_to "Edit", edit_link_path(link) %></td>
+  <td><%= link_to "Edit", edit_link_path(link) %> - <%= link_to "Delete", link_path(link), method: :delete %></td>
 </tr>
 <% end %>
 </tbody>
