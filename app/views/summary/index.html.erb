@@ -1,7 +1,11 @@
 <%= form_tag("/summary", method: "get") do %>
 
-	<%= label_tag(:director, "Director") %>
-	<%= select_tag "director", options_for_select([ ['anna.dix@hilton.com', 'anna.dix@hilton.com']]) %>
+
+  <%= label_tag(:director, "Director") %>
+  <%= select_tag "director", options_from_collection_for_select(@directors, :director, :director), :prompt =>'' %>
+
+  <%= label_tag(:senior, "Senior Manager") %>
+  <%= select_tag "senior", options_from_collection_for_select(@seniors, :senior, :senior), :prompt =>'' %>
 
 <div class="field" id="datetimepicker" class="input-append date">
 	<%= label_tag(:start_date, "Start Date") %>
@@ -30,6 +34,15 @@
   </tr>
 </thead>
 <% @users.each do |user| %>
+
+<tr>
+  <td> <%= user.email %></td>
+  <td><%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count  %></td>
+</tr>
+
+
+<% end %>
+<% @senior_users.each do |user| %>
 
 <tr>
   <td> <%= user.email %></td>
