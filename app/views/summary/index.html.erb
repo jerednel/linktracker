@@ -1,18 +1,49 @@
 <%= form_tag("/summary", method: "get") do %>
-	<%= label_tag(:director, "Director Email") %>
-	<%= text_field_tag(:director) %>
 
-	<%= label_tag(:start_date, "Start Date (YYYY-MM-DD") %>
+	<%= label_tag(:director, "Director") %>
+	<%= select_tag "director", options_for_select([ ['anna.dix@hilton.com', 'anna.dix@hilton.com']]) %>
+
+<div class="field" id="datetimepicker" class="input-append date">
+	<%= label_tag(:start_date, "Start Date") %>
 	<%= text_field_tag(:start_date) %>
-
-		<%= label_tag(:end_date, "End Date (YYYY-MM-DD") %>
+	 <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+</div>
+<div class="field" id="datetimepicker2" class="input-append date">
+	<%= label_tag(:end_date, "End Date") %>
 	<%= text_field_tag(:end_date) %>
+	 <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+</div>
 
 	<%= submit_tag("Submit") %>
+
 <% end %>
+
+<table class="table">
 <% @users.each do |user| %>
- <%= user.email %> - <%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count %>
-
+<thead>
+  <tr>
+    <th>Manager</th>
+    <th>Links</th>
+  </tr>
+</thead>
+<tr>
+  <td> <%= user.email %></td>
+  <td><%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count %></td>
+</tr>
 
 
 <% end %>
+</table>
+
+    <script type="text/javascript">
+      $('#datetimepicker').datetimepicker({
+        format: 'yyyy-MM-dd',
+      });
+      $('#datetimepicker2').datetimepicker({
+        format: 'yyyy-MM-dd',
+      });
+    </script>
