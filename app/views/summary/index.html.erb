@@ -23,13 +23,14 @@
 <% end %>
 
 <table class="table">
-<% @users.each do |user| %>
 <thead>
   <tr>
     <th>Manager</th>
     <th>Links</th>
   </tr>
 </thead>
+<% @users.each do |user| %>
+
 <tr>
   <td> <%= user.email %></td>
   <td><%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count %></td>
