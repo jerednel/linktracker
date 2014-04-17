@@ -2,7 +2,9 @@ Linktracker::Application.routes.draw do
   #devise_for :users
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   root 'links#index'
-  resources :links
+  resources :links do
+    collection {post :import} 
+  end
   get 'summary' => 'summary#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

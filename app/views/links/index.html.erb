@@ -1,4 +1,6 @@
 <p><%= link_to "New Link", new_link_path %></p>
+
+
 <table class="table">
 <thead> 
   <tr>
@@ -20,14 +22,28 @@
   <td><%= link.ctyhocn %></td>
   <td><%= link_to "View Site", link.linking_site %></td>
   <td><%= link.status %></td>
-  <td><%= link.anchor_text.truncate(20) %></td>
+
+  <td><%= link.anchor_text.nil? ? 'N/A' : link.anchor_text.truncate(20) %></td>
   <td><%= link.link_type %></td>
   <td><%= link.pagerank %></td>
   <td><%= link.date_requested %></td>
-  <td><%= link_to link.contact_email.truncate(20), "mailto:" + link.contact_email %></td>
+  <td>
+    <% if link.contact_email.nil? %>
+       "N/A" </td>
+    <% else  %> 
+      <%= link_to link.contact_email.truncate(20), "mailto:" + link.contact_email %></td>
+    <% end %>
   <td><%= link.date_active %></td>
   <td><%= link_to "Edit", edit_link_path(link) %></td>
 </tr>
 <% end %>
 </tbody>
 </table>
+
+<h3>Import Links</h3>
+<%= form_tag import_links_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+<p>
+<%= link_to "Download Template", "https://www.dropbox.com/s/m0bm1r531aroall/hotel-links.xlsx" %> - Paste your link data in this template, leaving the headers in tact.  Save the file as a CSV before uploading.</p>

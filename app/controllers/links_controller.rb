@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+	require 'csv'
 	def index
 		@links = current_user.links.order(date_requested: :desc)
 	end
@@ -8,6 +9,10 @@ class LinksController < ApplicationController
 		@user = current_user
 	end
 
+	def import
+		Link.import(params[:file], current_user.id.to_s)
+		redirect_to :root, :notice => "Links Imported"
+	end
 
 	def create
 		@user = current_user
