@@ -4,7 +4,15 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 gem 'devise'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development do
+	gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
+end
+
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
