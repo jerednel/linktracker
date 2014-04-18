@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416212318) do
+ActiveRecord::Schema.define(version: 20140418194644) do
 
   create_table "links", force: true do |t|
     t.string   "ctyhocn"
-    t.string   "linking_site"
+    t.text     "linking_site"
     t.string   "status"
     t.string   "anchor_text"
     t.string   "link_type"
