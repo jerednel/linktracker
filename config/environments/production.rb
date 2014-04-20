@@ -78,3 +78,11 @@ Linktracker::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
+ActionMailer::Base.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 465,
+  domain: "gmail.com",
+  authentication: :plain,
+  user_name: ENV['GMAIL_USERNAME'],
+  password: ENV['GMAIL_PASSWORD']
+}
