@@ -46,8 +46,8 @@ Total Activated
 <tr>
   <td> <%= user.email %></td>
 
-  <td><%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count  %></td>
-    <td><%= user.links.where('date_active > ? AND date_active < ?', params['start_date'], params['end_date']).count  %></td>
+  <td><%= user.links.where('date_requested >= ? AND date_requested <= ?', params['start_date'], params['end_date']).count  %></td>
+    <td><%= user.links.where('date_active >= ? AND date_active <= ?', params['start_date'], params['end_date']).count  %></td>
 </tr>
 
 
@@ -56,8 +56,8 @@ Total Activated
 
 <tr>
   <td> <%= user.email %></td>
-  <td><%= user.links.where('date_requested > ? AND date_requested < ?', params['start_date'], params['end_date']).count  %></td>
-  <td><%= user.links.where('date_active > ? AND date_active < ?', params['start_date'], params['end_date']).count  %></td>
+  <td><%= user.links.where('date_requested >= ? AND date_requested <= ?', params['start_date'], params['end_date']).count  %></td>
+  <td><%= user.links.where('date_active >= ? AND date_active <= ?', params['start_date'], params['end_date']).count  %></td>
 </tr>
 
 
